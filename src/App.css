@@ -1,0 +1,87 @@
+* {
+  font-family: "Cabin", sans-serif;;
+}
+
+.App {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background-color: #8c77ff;
+  margin: 0;
+}
+
+.container {
+  background-color: #ffff;
+  width: 80%;
+  max-width: 750px;
+  margin: 50px;
+  border-radius: 30px;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.logo{
+  width: 330px;
+  margin: 50px; 
+}
+
+.topic-container , .size-container, .tone-container , .platform-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  width: 90%;
+  margin-bottom: 20px;
+}
+
+label {
+  font-size: 22px;
+  margin: 5px;
+  color: #353535;
+}
+
+input {
+  font-size: 18px;
+  padding: 8px;
+  border: solid 2px #4e4e4e;
+  border-radius: 10px;
+}
+
+
+
+.generator-btn {
+  font-size: 20px;
+  padding: 10px 40px;
+  border: none;
+  border-radius: 10px;
+  color: #ffff;
+  background-color: #8c77ff;
+  cursor: pointer;
+  margin-bottom: 20px;
+
+}
+
+.generator-btn:hover {
+  background-color: #9584f5;
+}
+
+
+.content-container {
+  width: 90%;
+  height: auto;
+  background-color: #ece9e9;
+  border-radius: 20px;
+}
+
+.content {
+  font-size: 18px;
+  margin: 30px;
+}
+
+
+.madeBy {
+  font-size: 19px;
+  padding-top: 18px;
+  color: #6e6e6e;
+}
