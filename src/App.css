@@ -72,11 +72,14 @@ input {
   height: auto;
   background-color: #ece9e9;
   border-radius: 20px;
+  
 }
 
 .content {
   font-size: 18px;
   margin: 30px;
+  white-space: pre-wrap;
+  overflow: auto;
 }
 
 

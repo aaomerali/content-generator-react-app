@@ -1,6 +1,8 @@
 import logo from './logo.png';
 import './App.css';
 import { useState } from 'react';
+import { GoogleGenerativeAI } from '@google/generative-ai';
+
 import axios from 'axios';
 
 function App() {
@@ -16,25 +18,24 @@ function App() {
     e.preventDefault();
     setContent("Loading your answer... \n It might take upto 10 seconds");
     try {
-      const response = await axios({
-        url:" https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=AIzaSyCUzyu9vsX1d-cJbfLhMoz9LZR0sCZdY0I",
-        method: "post",
-        data: {
-          contents:[{parts:[{ text: "Explain how AI works"}]}],
-        },
-      });
 
-      console.log(response)
-      /*setContent(
-        response["data"]["candidates"][0]["content"]["parts"][0]["text"]
-      );*/
+      const genAI = new GoogleGenerativeAI('AIzaSyAPZfCIZnLqUB5toqkl4dO08PiQOD9NOoc');
+      const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+
+      const prompt = `write a ${size} content talking about ${topic} with ${tone} tone and suitable for ${platform} platform` ;
+
+      const result = await model.generateContent(prompt);
+      setContent(result.response.text());
+      
     } catch (error) {
-      console.log(error);
-      setContent("Sorry - Mohaamed Bamedhagh");
+      console.error('Error:', error);
     }
 
     setGeneratingAnswer(false);
-  }
+  };
+
+   
+  
 
   
   
@@ -62,10 +63,10 @@ function App() {
 
         <div className="platform-container">
           <label htmlFor="platform">Write the platform that you will post on :</label>
-          <input className="platform" value={size} onChange={(e) => setSize(e.target.value)} type="text" placeholder='Ex: instagram, facebook, linkedn ...' />
+          <input className="platform" value={platform} onChange={(e) => setPlatform(e.target.value)} type="text" placeholder='Ex: instagram, facebook, linkedn ...' />
         </div>
 
-        <button className='generator-btn' onClick={(e) => generateContent(e)}>Generate Thread</button>
+        <button className='generator-btn' onClick={generateContent}>Generate Thread</button>
 
         <div className="content-container">
           <p className='content'>{content}</p>
